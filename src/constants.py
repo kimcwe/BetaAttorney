@@ -15,7 +15,7 @@ WHITE = (255, 255, 255)
 GREY = (128, 128, 128)
 
 SCREEN = pygame.display.set_mode((RESOLUTION_WIDTH, RESOLUTION_HEIGHT))
-SCREEN.fill(GREY)
+SCREEN.fill(BLACK)
 
 START_SCREEN = "start_screen"
 IN_GAME = "in_game"

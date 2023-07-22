@@ -1,4 +1,16 @@
-2023-07-21 16:02:01,010 Initializing BetaAttorney v.0.0.0 ...
-2023-07-21 16:02:01,010 Resolution: [1280, 720], FPS:30
-2023-07-21 16:02:01,010 Loading game state: start_screen
-2023-07-21 16:02:03,853 Quitting game ...
+2023-07-22 00:24:05,891 Initializing BetaAttorney v.0.0.0 ...
+2023-07-22 00:24:05,892 Resolution: [1280, 720], FPS:30
+2023-07-22 00:24:05,892 Loading game state: start_screen
+2023-07-22 00:24:06,745 mouse button clicked at pos: (614, 340)
+2023-07-22 00:24:06,746 Drawing button
+2023-07-22 00:24:07,957 mouse button clicked at pos: (741, 457)
+2023-07-22 00:24:07,958 Drawing button
+2023-07-22 00:24:08,144 mouse button clicked at pos: (741, 457)
+2023-07-22 00:24:08,145 Drawing button
+2023-07-22 00:24:08,284 mouse button clicked at pos: (619, 477)
+2023-07-22 00:24:08,285 Drawing button
+2023-07-22 00:24:09,164 mouse button clicked at pos: (738, 593)
+2023-07-22 00:24:09,166 Drawing button
+2023-07-22 00:24:09,531 mouse button clicked at pos: (724, 603)
+2023-07-22 00:24:09,532 Drawing button
+2023-07-22 00:24:10,094 Quitting game ...
