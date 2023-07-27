@@ -14,9 +14,10 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREY = (128, 128, 128)
 
-SCREEN = pygame.display.set_mode((RESOLUTION_WIDTH, RESOLUTION_HEIGHT))
-SCREEN.fill(BLACK)
+BUTTON_FONT = "inkfree"
+TEXT_FONT = "inkfree"
 
 START_SCREEN = "start_screen"
+START_SCREEN_ON = "start_screen_on"
 IN_GAME = "in_game"
 END_SCREEN = "end_screen"

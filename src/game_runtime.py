@@ -5,8 +5,9 @@ from pygame.locals import *
 
 import constants as const
 from characters import Player
-from functions import draw_functions
 from ui import Button
+from ui import Screen
+
 
 logging.basicConfig(filename="./logs/runtime.log", format='%(asctime)s %(message)s', filemode='w')
 log = logging.getLogger()
@@ -26,16 +27,29 @@ def main():
     game_state = const.START_SCREEN
     log.info(f"Loading game state: {game_state}")
     
-    default_bg = pygame.Surface(const.SCREEN.get_size())
-    default_bg = default_bg.convert()
-    default_bg.fill(const.BLACK)
-    const.SCREEN.blit(default_bg, (0,0))
-
+    screen = Screen.Screen()
     P1 = Player.Player()
+    
+    print(pygame.font.get_fonts())
+    
+    image_background_title = pygame.image.load("assets/background/BackgroundTitle.png")
+    screen.draw_image(image_background_title, (0,0))
+    image_logo = pygame.image.load("assets/background/Logo.png")
+    screen.draw_image(image_logo,  (const.RESOLUTION_WIDTH/2 - image_logo.get_width()/2, const.RESOLUTION_HEIGHT/2 - image_logo.get_height() + 150))
     
     while running:
         # cursor_pos = pygame.mouse.get_pos()
         # pressed = pygame.mouse.get_pressed()[0]
+        screen_surface = screen.get_screen()
+        if game_state == const.START_SCREEN:
+            button = Button.Button(screen_surface)
+            button.draw("NEW GAME", (const.RESOLUTION_WIDTH/2 - image_logo.get_width()/2,300), 'm')
+        elif game_state == const.IN_GAME:
+            # const.SCREEN.blit(default_bg, (0,0))
+            # P1.draw(const.SCREEN)
+            # P1.update()
+            pass
+        
         
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -51,18 +65,8 @@ def main():
                         log.info(f"Loading game state: {game_state}")
             elif event.type == MOUSEBUTTONDOWN:
                 log.info(f"mouse button clicked at pos: {event.pos}")
-                button = Button.Button("test button", (500,300), 'm')
-                button.draw()
-                logging.info(f"Drawing button")
-
-        if game_state == const.START_SCREEN:
-            draw_functions.draw_start_menu()
-        elif game_state == const.IN_GAME:
-            const.SCREEN.blit(default_bg, (0,0))
-            P1.draw(const.SCREEN)
-            P1.update()
-        
-
+                
+ 
         pygame.display.update()
         fps.tick(const.FRAME_LIMIT)
 
