@@ -29,29 +29,35 @@ def main():
     
     screen = Screen.Screen()
     P1 = Player.Player()
+    button = Button.Button(screen.get_screen())
     
-    print(pygame.font.get_fonts())
+    group = pygame.sprite.Group()
+    group.add(button)
+    group.add(P1)
+    # print(pygame.font.get_fonts())
     
     image_background_title = pygame.image.load("assets/background/BackgroundTitle.png")
     screen.draw_image(image_background_title, (0,0))
     image_logo = pygame.image.load("assets/background/Logo.png")
-    screen.draw_image(image_logo,  (const.RESOLUTION_WIDTH/2 - image_logo.get_width()/2, const.RESOLUTION_HEIGHT/2 - image_logo.get_height() + 150))
+    screen.draw_image(image_logo,  (const.RESOLUTION_WIDTH/2 - image_logo.get_width()/2, const.RESOLUTION_HEIGHT/2 - image_logo.get_height()))
     
     while running:
         # cursor_pos = pygame.mouse.get_pos()
         # pressed = pygame.mouse.get_pressed()[0]
         screen_surface = screen.get_screen()
         if game_state == const.START_SCREEN:
-            button = Button.Button(screen_surface)
-            button.draw("NEW GAME", (const.RESOLUTION_WIDTH/2 - image_logo.get_width()/2,300), 'm')
+            button.draw("NEW GAME", (const.RESOLUTION_WIDTH/2 - button.get_button_image().get_width()/2, const.RESOLUTION_HEIGHT/2 - button.get_button_image().get_height()/2 + 100), 'm')
+            button.draw("LOAD GAME", (const.RESOLUTION_WIDTH/2 - button.get_button_image().get_width()/2, const.RESOLUTION_HEIGHT/2 - button.get_button_image().get_height()/2 + 200), 'm')
+            button.draw("SETTINGS", (const.RESOLUTION_WIDTH/2 - button.get_button_image().get_width()/2, const.RESOLUTION_HEIGHT/2 - button.get_button_image().get_height()/2 + 300), 'm')
+
         elif game_state == const.IN_GAME:
             # const.SCREEN.blit(default_bg, (0,0))
             # P1.draw(const.SCREEN)
             # P1.update()
             pass
         
-        
-        for event in pygame.event.get():
+        event_list = pygame.event.get()
+        for event in event_list:
             if event.type == QUIT:
                 running = False
                 pygame.quit()
@@ -65,8 +71,8 @@ def main():
                         log.info(f"Loading game state: {game_state}")
             elif event.type == MOUSEBUTTONDOWN:
                 log.info(f"mouse button clicked at pos: {event.pos}")
-                
  
+        group.update()
         pygame.display.update()
         fps.tick(const.FRAME_LIMIT)
 
